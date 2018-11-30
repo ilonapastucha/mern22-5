@@ -1,5 +1,7 @@
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
 
 // Import Components
 import PostList from '../../components/PostList';
@@ -33,12 +35,12 @@ class PostListPage extends Component {
   // INSERT +/- FUNCTIONS HERE
   handleThumbUpPost = post => {
     console.log('handleThumbUpPost: ' + post.name + ' cuid: ' + post.cuid);
-    this.props.dispatch(thumbUpPostRequest(post.cuid, post));
+    this.props.dispatch(thumbUpPostRequest(post.cuid));
   };
 
   handleThumbDownPost = post => {
     console.log('You reached handleThumbDownPost: ' + post.name);
-    this.props.dispatch(thumbDownPostRequest(post.cuid, post));
+    this.props.dispatch(thumbDownPostRequest(post.cuid));
   };
 
   render() {
@@ -74,7 +76,7 @@ PostListPage.propTypes = {
 };
 
 PostListPage.contextTypes = {
-  router: React.PropTypes.object,
+  router: PropTypes.object,
 };
 
 export default connect(mapStateToProps)(PostListPage);
